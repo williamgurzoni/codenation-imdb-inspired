@@ -12,7 +12,7 @@
 
 body {
   background-color: #f2f2f2;
-  font-family: "Montserrat";
+  font-family: "Montserrat", sans-serif;
 }
 
 ul {
@@ -21,14 +21,19 @@ ul {
   padding: 0;
 }
 
-ul li {
+li {
   list-style-type: none;
+}
+
+.container {
+  margin: 0 auto;
+  position: relative;
+  width: 960px;
 }
 
 .header-primary {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
   background-image: url("../img/capa-madmax2.jpg");
   background-repeat: no-repeat;
@@ -36,7 +41,7 @@ ul li {
   background-attachment: fixed;
   height: 90vh;
   padding: 20px;
-  width: 100%;
+  position: relative;
 }
 
 .header-primary:after {
@@ -54,29 +59,32 @@ ul li {
 }
 
 .nav-primary {
+  z-index: 2;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 1024px;
-  font-size: 0.8rem;
-  color: white;
-  font-weight: 700;
 }
 
-.nav-primary ul li {
+.nav-primary .container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-primary li {
   margin-right: 5px;
   padding: 20px;
   text-transform: uppercase;
   cursor: pointer;
 }
 
-.nav-primary ul li a {
+.nav-primary a {
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
   text-decoration: none;
-  color: inherit;
   transition: all 0.2s ease-in-out;
 }
 
-.nav-primary ul li a:hover {
+.nav-primary a:hover {
   color: var(--color-primary);
 }
 
@@ -97,8 +105,7 @@ ul li {
 }
 
 .banner-info {
-  max-width: 1024px;
-  margin: 0 auto;
+  display: flex;
   z-index: 2;
 }
 
@@ -108,7 +115,7 @@ ul li {
   margin-bottom: 1rem;
 }
 
-.banner-info ul li a {
+.banner-info a {
   text-decoration: none;
   margin-right: 15px;
   text-transform: uppercase;
@@ -118,7 +125,7 @@ ul li {
   font-weight: 400;
 }
 
-.banner-info ul li a:hover {
+.banner-info a:hover {
   color: var(--color-primary);
 }
 
@@ -133,6 +140,7 @@ ul li {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   cursor: pointer;
+  position: relative;
 }
 
 .banner-info .button:hover:after {
@@ -159,12 +167,12 @@ ul li {
   font-size: 0.9rem;
 }
 
-.banner-info .info .cinema {
+.banner-info .cinema {
   color: white;
   margin-bottom: 1rem;
 }
 
-.banner-info .info .premier-day {
+.banner-info .premier-day {
   color: var(--color-primary);
   margin-bottom: 1rem;
 }
@@ -172,16 +180,18 @@ ul li {
 /* Nav secundary */
 .nav-secundary {
   display: flex;
-  max-width: 1024px;
-  margin: 0 auto;
-  height: 60px;
-  justify-content: center;
-  align-items: center;
   border-bottom: solid 2px #ebebeb;
   margin-bottom: 25px;
 }
 
-.nav-secundary ul li a {
+.nav-secundary .container {
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-secundary a {
   color: var(--color-primary);
   text-decoration: none;
   padding: 20px;
@@ -191,27 +201,31 @@ ul li {
   font-size: 0.75rem;
 }
 
-.nav-secundary ul li a:hover {
+.nav-secundary a:hover {
   border-bottom: solid 4px;
   border-bottom-color: var(--color-primary);
 }
+
 /* main section */
 main {
   display: flex;
+  padding: 0 20px 0 20px;
+}
+
+main .container {
+  display: flex;
   flex-wrap: wrap;
-  max-width: 1024px;
-  margin: 0 auto;
-  overflow-x: hidden;
   justify-content: space-between;
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  width: 245px;
+  width: 24%;
+  min-width: 230px;
   border-radius: 5px;
   overflow: hidden;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: white;
 }
@@ -222,7 +236,7 @@ main {
   position: relative;
 }
 
-.card .figure img {
+.card img {
   width: 100%;
 }
 
@@ -252,17 +266,6 @@ main {
   font-size: 1.5rem;
 }
 
-.fa-play {
-  color: white;
-  font-size: 3rem;
-  transition: all 0.3s ease-in-out;
-  cursor: pointer;
-}
-
-.fa-play:hover {
-  color: var(--color-primary);
-}
-
 .card footer {
   padding: 10px;
   background-color: white;
@@ -279,7 +282,7 @@ main {
   margin: 10px 0 10px 0;
 }
 
-.card ul li {
+.card li {
   font-size: 0.6rem;
   color: var(--color-primary);
   padding: 0;
@@ -300,26 +303,40 @@ main {
 .footer {
   display: flex;
   background-color: white;
-  justify-content: center;
+  padding: 30px 20px 40px 20px;
 }
 
 .footer .container {
   display: flex;
-  width: 1024px;
-  padding: 40px 0 30px 0;
   align-items: center;
   justify-content: space-between;
 }
 
-.fa-twitter,
-.fa-facebook-official,
-.fa-instagram,
-.fa-heart {
+/* Icons */
+
+.fa {
   color: #ccc;
   cursor: pointer;
   font-size: 22px;
   margin-right: 20px;
   transition: all 0.2s ease-in-out;
+}
+
+.fa-play-circle-o {
+  color: black;
+  margin-right: 0px;
+}
+
+.fa-play {
+  color: white;
+  font-size: 3rem;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  margin-right: 0px;
+}
+
+.fa-play:hover {
+  color: var(--color-primary);
 }
 
 .fa-heart:hover {
